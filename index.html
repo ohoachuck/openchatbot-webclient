@@ -1,0 +1,152 @@
+<!--
+ * Giovanni Battista Accetta Copyright 2016
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:title" content="Metaboto - Open Source meta-bot" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://metaboto.com/resources/metaboto_320x200.png" />
+    <meta property="og:image:width" content="320" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:url" content="https://metaboto.com" />
+    <meta property="og:site_name" content="Metaboto - Open source meta-bot" />
+    <meta property="og:description" content="Metaboto, an Open Source meta-bot based on program-y AIML bot framework" />
+    <meta property="og:updated_time" content="2020-10-20T13:37:37+02:00" />
+    <link rel="canonical" href="https://metaboto.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open ChatBot client</title>
+    <link rel="stylesheet" type="text/css" href="styles/inline.css">
+    <!-- TODO add manifest here -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ocb">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/noto-emoji" type="text/css" />
+    <META NAME="robots" CONTENT="noindex,nofollow">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">OpenChatBot client</h1>
+        <button id="butAdd" class="headerButton" aria-label="Add" hidden></button>
+    </header>
+
+    <main class="main_ocb">
+
+        <div class="messageUserContainer_ocb userMessageTemplate_ocb" hidden>
+            <div class="message_ocb"> </div>
+        </div>
+
+        <div class="messageocbContainer ocbMessageTemplate" hidden>
+            <div class="ocbFlexBox">
+                <div class="avatarocb"> </div>
+                <div class="ocb_message_content">
+                    <div class="message_ocb"> </div>
+                    <div class="galleryFlexBox_ocb" hidden></div>
+                </div>
+            </div>
+            <div class="suggestionsFlexBox_ocb"></div>
+        </div>
+
+        <div class="galleryItemContainer_ocb galleryItemTemplate_ocb" hidden>
+            <div class="galleryItem_ocb">
+                <a class="galleryImageLink_ocb">
+                    <div class="galleryImage_ocb">
+                    </div>
+                    <div class="galleryShortDescription_ocb"> </div>
+                    <div class="galleryLongDescription_ocb"> </div>
+                    <a class="galleryLink_ocb"> </a>
+                </a>
+            </div>
+        </div>
+        <div class="galleryItemButton_ocb galleryItemButtonTemplate_ocb" hidden>
+            <a class="galleryItemButtonLink_ocb"> </a>
+        </div>
+
+
+        <div class="suggestionsItemContainer_ocb suggestionsItemTemplate_ocb" hidden>
+            <div class="suggestionsItem_ocb">
+                <a class="suggestionsItemLink_ocb"> </a>
+            </div>
+        </div>
+
+
+    </main>
+
+    <div class="loader_ocb">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+            <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+        </svg>
+    </div>
+
+    <footerocb keyboard-attach class="footer_ocb">
+        <input id="input" class="footerInput_ocb" type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" on-focus="inputUp()" on-blur="inputDown()" />
+        <div class="footerButtonContainer_ocb">
+            <div id="butSend" class="footerButton_ocb" aria-label="Send">      </div>
+        </div>
+        <div class="footerButtonContainer_ocb">
+            <div id="butMic" class="footerButton_ocb" aria-label="Mic">      </div>
+        </div>
+    </footerocb>
+
+    <div class="dialog-container_ocb">
+        <div class="dialog_ocb">
+            <div class="dialog-title_ocb">Phone Number</div>
+            <input id="inputNumber" class="dialog-input_ocb" type="text" placeholder=" i.e. +33717171717" on-return="closeKeyboard()"></input>
+            <div class="dialog-button-container_ocb">
+                <button id="butAddNumber" class="dialog-buttons_ocb">SAVE</button>
+                <button id="butAddNumberCancel" class="dialog-buttons_ocb">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="micro-container_ocb">
+        <div class="micro_ocb">
+            <div id="microImg" class="micro-image_ocb"> </div>
+        </div>
+    </div>
+
+    <div class="ocb_fast_scroll_button" hidden>
+        <div id="ocbScrollBut" class="ocb_arrow_image" aria-label="Scroll"> </div>
+    </div>
+
+    <script src="scripts/appocb.js" async></script>
+
+</body>
+</html>

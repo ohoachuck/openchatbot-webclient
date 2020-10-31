@@ -1,0 +1,68 @@
+= WebChat Client for Open ChatBot compatible bots
+:Date:      31/10/2020
+:Revision:  v0.0.1
+//:source-highlighter: pygments
+//:pygments-style: emacs
+ifdef::env-github[]
+:imagesdir: https://github.com/ohoachuck/openchatbot-webclient/blob/master/images
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+ifndef::env-github[]
+:imagesdir: ./images
+endif::[]
+:toc:
+:toc-placement!:
+
+openchatbot-client is a webchat box compatible with https://github.com/alliance-for-openchatbot/standard[Open ChatBot format] created by https://www.alliance-open-chatbot.org[Alliance For Open ChatBot].
+
+image::webchat-client.png[WebChat box, 200, 354]
+
+== Setup
+
+==== 1 - Define your Open ChatBot API EndPoint in script/appocb.js (line 21):
+----
+    let apiEndPoint = "https://openchatbot.io/api/v1.0/ask"
+----
+
+==== 2 - Set the path of this wenclient on your webpage in sripts/importocb.js (line 21):
+----
+    let webClientURL = 'https:\/\/metaboto.com/openchatbot-webclient\/'
+----
+
+==== 3 - Import your the chatbox by adding the url of appocb.js at the bottom of your webpage (just before the </body> tag):
+
+[source, javascript]
+----
+<script src="scripts/appocb.js" async></script>
+----
+
+This could be the full URL path.
+
+== Important note
+Because of the use of ajax for getting content from API Endpoint, Open ChatBot json format result should be embedded within a function.
+So the recommended architecture is to have a proxy website between your ChatBox and the formal open Chatbot API so that content returned to the ChatBox is embedded within a function.
+
+The ChatBox expected embedding function name is `parseocbAnswer`
+
+So ChatBox would call your website proxy API with a callback parameter giving the function name like so:
+----
+curl "https://metaboto.com/api/metaboto/rest/v2.0/ask?userId=2371aeb8-58d2-41bc-8382-1a205b0cbd2d&query=%40doungdoung%20hello&callback=parseocbAnswer"
+----
+
+And response would look's like:
+
+[source, json]
+----
+parseocbAnswer({"meta": {"authors": ["Olivier HO-A-CHUCK"], "botName": "OpenChatBot MetaBoto", "copyright": "Copyright 2020 metaboto.com", "version": "3.9"}, "response": {"query": "@doungdoung hello", "text": "I'm DoungDoung bot. Your query is\"hello\".", "timestamp": 1604170101.301502, "userId": "2371aeb8-58d2-41bc-8382-1a205b0cbd2d"}, "status": {"code": 200, "message": "success"}})
+----
+
+== Demo
+You can test this box on https://www.metaboto.com[metaboto.com].
+
+Call any ChatBot compatible Open ChatBot that have declared their API enpoint using DomainBots standard[https://openchatbot.io/domainbots/].
+
+For instance, test "@doungdoung hello", or "@openchatbot what time is it". Both sites have referenced their bots on their domain name.

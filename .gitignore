@@ -1,0 +1,15 @@
+# Sphinx documentation
+docs/_build/
+
+# dotenv
+.env
+
+# virtualenv
+venv/
+ENV/
+
+.DS_Store
+.idea
+
+# Visual Studio code
+.vscode
