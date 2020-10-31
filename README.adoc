@@ -23,12 +23,12 @@ image::webchat-client.png[WebChat box, 200, 354]
 
 == Setup
 
-==== 1 - Define your Open ChatBot API EndPoint in script/appocb.js (line 21):
+==== 1 - Define your Open ChatBot API EndPoint in script/appocb.js (line 21), example:
 ----
     let apiEndPoint = "https://openchatbot.io/api/v1.0/ask"
 ----
 
-==== 2 - Set the path of this wenclient on your webpage in sripts/importocb.js (line 21):
+==== 2 - Set the path of this webclient on your webpage in sripts/importocb.js (line 21), example:
 ----
     let webClientURL = 'https:\/\/metaboto.com/openchatbot-webclient\/'
 ----
@@ -63,6 +63,6 @@ parseocbAnswer({"meta": {"authors": ["Olivier HO-A-CHUCK"], "botName": "OpenChat
 == Demo
 You can test this box on https://www.metaboto.com[metaboto.com].
 
-Call any ChatBot compatible Open ChatBot that have declared their API enpoint using DomainBots standard[https://openchatbot.io/domainbots/].
+Call any ChatBot compatible Open ChatBot that have declared their API enpoint using https://openchatbot.io/domainbots/[DomainBots standard].
 
 For instance, test "@doungdoung hello", or "@openchatbot what time is it". Both sites have referenced their bots on their domain name.
