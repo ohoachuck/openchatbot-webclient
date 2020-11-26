@@ -15,19 +15,19 @@
 let dataCacheName = 'ocb-v1.2';
 let cacheName = 'ocb-dev-1.2';
 let filesToCache = [
-  '/openchatbot-client/',
-  '/openchatbot-client/index.html',
-  '/openchatbot-client/scripts/appocb.js',
-  '/openchatbot-client/images/ocbDefaultIcon.png',
-  '/openchatbot-client/styles/inline.css',
-  '/openchatbot-client/images/ic_mic_green_24px.svg',
-  '/openchatbot-client/images/ic_send_green_24px.svg',
-  '/openchatbot-client/images/ic_account_circle_white_36px.svg',
-  '/openchatbot-client/images/ic_arrow_downward_white_24px.svg',
-    '/openchatbot-client/images/ocb.png',
-    '/openchatbot-client/images/ocb_transparent.png',
-    '/openchatbot-client/images/button.png',
-  '/openchatbot-client/images/micro.png',
+  '/openchatbot-webclient/',
+  '/openchatbot-webclient/index.html',
+  '/openchatbot-webclient/scripts/appocb.js',
+  '/openchatbot-webclient/images/ocbDefaultIcon.png',
+  '/openchatbot-webclient/styles/inline.css',
+  '/openchatbot-webclient/images/ic_mic_green_24px.svg',
+  '/openchatbot-webclient/images/ic_send_green_24px.svg',
+  '/openchatbot-webclient/images/ic_account_circle_white_36px.svg',
+  '/openchatbot-webclient/images/ic_arrow_downward_white_24px.svg',
+    '/openchatbot-webclient/images/ocb.png',
+    '/openchatbot-webclient/images/ocb_transparent.png',
+    '/openchatbot-webclient/images/button.png',
+  '/openchatbot-webclient/images/micro.png',
 ];
 
 self.addEventListener('install', function(e) {
